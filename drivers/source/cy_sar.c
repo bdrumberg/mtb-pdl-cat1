@@ -496,11 +496,6 @@ void Cy_SAR_Disable(SAR_Type *base)
 {
     if (_FLD2BOOL(SAR_CTRL_ENABLED, SAR_CTRL(base)))
     {
-        while (_FLD2BOOL(SAR_STATUS_BUSY, SAR_STATUS(base)))
-        {
-            /* Wait for SAR to go idle */
-        }
-
         SAR_CTRL(base) &= ~SAR_CTRL_ENABLED_Msk;
 
         if ((!CY_PASS_V1) && (0UL != (Cy_SAR_flags & CY_SAR_INSTANCE_MASK(base))))
